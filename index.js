@@ -1,6 +1,6 @@
 export default {
   async fetch(request, env, ctx) {
-    const githubUrl = "https://raw.githubusercontent.com/BackendStudio/gac-ecuador-conf/refs/heads/main/llms.txt";
+    const githubUrl = "https://raw.githubusercontent.com/BackendStudio/gac-llms-txt/refs/heads/main/llms.txt";
     
     // El robot va al GitHub de BackendStudio y descarga el archivo
     const response = await fetch(githubUrl);
