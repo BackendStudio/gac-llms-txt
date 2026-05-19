@@ -1,17 +1,17 @@
 export default {
-  async fetch(request, env, ctx) {
+  async fetch(request: Request, env: unknown, ctx: ExecutionContext): Promise<Response> {
     const githubUrl = "https://raw.githubusercontent.com/BackendStudio/gac-llms-txt/refs/heads/main/llms.txt";
-    
-    // El robot va al GitHub de BackendStudio y descarga el archivo
+
+    // Fetch the file from BackendStudio's GitHub repository
     const response = await fetch(githubUrl);
-    
-    // Le responde al usuario con el contenido en formato de texto plano
+
+    // Respond to the user with the content as plain text
     return new Response(response.body, {
       status: response.status,
       headers: {
         "content-type": "text/plain; charset=UTF-8",
-        "Access-Control-Allow-Origin": "*", // Permite que las IA lo lean sin bloqueos
+        "Access-Control-Allow-Origin": "*", // Allows AI clients to read it without CORS blocks
       },
     });
   },
-};
+} satisfies ExportedHandler;
